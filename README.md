@@ -20,14 +20,16 @@ config).
 
 The config directory will have the medusa_copier.yaml and rclone.conf.
 
-Sample docker-compose.yml, rclone.conf, medusa_copier.yaml, and crontab files
+Sample docker-compose.yml, rclone.conf, and medusa_copier.yaml files
 are included in the etc/ directory of this repository. 
 
 Once those config files are in place under COPIER_DIR and the medusa-copier
-docker image is available you should be able to `docker-compose up` in 
+docker image is available you should be able to `docker-compose up -d` in 
 that directory and then have copiers running. The start.sh and stop.sh scripts
 do little more than ensuring that the log/run directories exist and running
-`docker-compose start/stop`. 
+`docker-compose start/stop`. The sample docker-compose.yml file uses
+`restart: always` on the containers, so it shouldn't be necessary to
+do anything more to start them on reboot.
 
 I expect this to evolve a little bit to take advantage of some of the
 technologies to monitor and restart the containers when necessary, but as
