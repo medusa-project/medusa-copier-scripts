@@ -12,6 +12,7 @@ version: "3.5"
 services:
   copier_1:
     image: medusa-copier:latest
+    restart: always
     volumes:
       - ./config:/usr/src/app/config
       - ./run/1:/usr/src/app/run
@@ -20,6 +21,7 @@ services:
 
   copier_2:
     image: medusa-copier:latest
+    restart: always
     volumes:
       - ./config:/usr/src/app/config
       - ./run/2:/usr/src/app/run
@@ -28,6 +30,7 @@ services:
 
   copier_3:
     image: medusa-copier:latest
+    restart: always
     volumes:
       - ./config:/usr/src/app/config
       - ./run/3:/usr/src/app/run
@@ -36,6 +39,7 @@ services:
 
   copier_4:
     image: medusa-copier:latest
+    restart: always
     volumes:
       - ./config:/usr/src/app/config
       - ./run/4:/usr/src/app/run
