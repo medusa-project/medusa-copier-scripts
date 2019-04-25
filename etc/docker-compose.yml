@@ -1,0 +1,43 @@
+#See the docs https://docs.docker.com/compose/compose-file/ for ways this might be shortened up - in particular
+#we should be able to use an indirection for everything but the run/log volumes. Or maybe not - yaml may not
+#allow this particular type of thing to happen.
+version: "3.5"
+
+#For our setup we map all the desired local directories at once with a /mnt:/mnt map.
+#The same config is mounted to each container. run and log directories are mapped
+#on a container by container basis - just make sure they all really exist. Note that
+#you could set up the logs to do something different, but the application needs to 
+#have the run directory because it persists some stuff there. You could make these
+#docker volumes instead of on the filesystem if desired, though.
+services:
+  copier_1:
+    image: medusa-copier:latest
+    volumes:
+      - ./config:/usr/src/app/config
+      - ./run/1:/usr/src/app/run
+      - ./log/1:/usr/src/app/log
+      - /mnt:/mnt
+
+  copier_2:
+    image: medusa-copier:latest
+    volumes:
+      - ./config:/usr/src/app/config
+      - ./run/2:/usr/src/app/run
+      - ./log/2:/usr/src/app/log
+      - /mnt:/mnt
+
+  copier_3:
+    image: medusa-copier:latest
+    volumes:
+      - ./config:/usr/src/app/config
+      - ./run/3:/usr/src/app/run
+      - ./log/3:/usr/src/app/log
+      - /mnt:/mnt
+
+  copier_4:
+    image: medusa-copier:latest
+    volumes:
+      - ./config:/usr/src/app/config
+      - ./run/4:/usr/src/app/run
+      - ./log/4:/usr/src/app/log
+      - /mnt:/mnt
