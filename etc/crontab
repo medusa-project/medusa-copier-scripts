@@ -1,0 +1,4 @@
+MAILTO=""
+
+@reboot $HOME/bin/start.sh
+
